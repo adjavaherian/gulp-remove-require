@@ -1,0 +1,26 @@
+{
+  "name": "gulp-require-sass",
+  "version": "1.0.0",
+  "description": "Gulp plugin to filter out webpack style sass requires",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adjavaherian/gulp-require-sass"
+  },
+  "keywords": [
+    "gulp",
+    "require",
+    "sass",
+    "filter",
+    "webpack"
+  ],
+  "author": "adjavaherian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adjavaherian/gulp-require-sass/issues"
+  },
+  "homepage": "https://github.com/adjavaherian/gulp-require-sass"
+}
