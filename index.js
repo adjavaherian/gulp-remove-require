@@ -1,12 +1,12 @@
-//gulp-require-sass/index.js
-//follow sass requires, [optionally remove], transform into inline js [comment|variable]
+//gulp-remove-require/index.js
+//regex requires, [optionally remove]
 //useful for pre-processing webpack style "enhanced" requires
 
 var through = require('through2');
 var gutil = require('gulp-util');
 
 // Consts
-const PLUGIN_NAME = 'gulp-require-sass';
+const PLUGIN_NAME = 'gulp-remove-require';
 
 function processRequires(fileString, opts) {
 
@@ -18,11 +18,11 @@ function processRequires(fileString, opts) {
         //proper re
         //(var\s|)\s*\w+\s+=\s+require\((\'|\")[\w.\/]*scss[\w.\/]*(\'|\")\);*\s*/g
         var re = new RegExp('(var\\s|)\\s*\\w+\\s+=\\s+require\\((' + "\\'" + '|\\")[\\w.\\/]*' + testString + '[\\w.\\/]*(' +  "\\'" + '|\\")\\);*\\s*', 'g');
-        gutil.log(re.toString());
+        //gutil.log(re.toString());
 
         if (opts.removeLine) {
             newFile = fileString.replace(re, '');
-            gutil.log('removing line\n', newFile);
+            //gutil.log('removing line\n', newFile);
         }
     }
 
@@ -30,7 +30,7 @@ function processRequires(fileString, opts) {
 }
 
 // Plugin level function(dealing with files)
-function gulpRequireSass(opts) {
+function gulpRemoveRequire(opts) {
 
     opts = opts || {};
 
@@ -42,12 +42,12 @@ function gulpRequireSass(opts) {
         }
 
         if (file.isStream()) {
-            cb(new gutil.PluginError('gulp-require-sass', 'Streaming not supported'));
+            cb(new gutil.PluginError('gulp-remove-require', 'Streaming not supported'));
             return;
         }
 
         if (file.isBuffer()) {
-            gutil.log('file isBuffer');
+            //gutil.log('file isBuffer');
             file.contents = new Buffer(processRequires(file.contents.toString(), opts));
         }
 
@@ -58,4 +58,4 @@ function gulpRequireSass(opts) {
 }
 
 // Exporting the plugin main function
-module.exports = gulpRequireSass;
+module.exports = gulpRemoveRequire;
