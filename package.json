@@ -1,6 +1,6 @@
 {
   "name": "gulp-remove-require",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gulp plugin to filter out webpack style sass requires (or whatever)",
   "main": "index.js",
   "scripts": {

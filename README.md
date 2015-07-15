@@ -24,7 +24,10 @@ var removeRequire = require('gulp-remove-require');
 
 gulp.task('remove-sass-requires', function() {
     return gulp.src(['nastyHobbitsess.js'])
-        .pipe(removeRequire())
+        .pipe(removeRequire({
+            testString: 'scss',
+            removeLine: true
+        }))
         .pipe(dest('/tmp/niceHobbitsess.js'));
 });
 

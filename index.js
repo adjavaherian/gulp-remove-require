@@ -12,7 +12,7 @@ function processRequires(fileString, opts) {
 
     var newFile = fileString;
 
-    if (opts.testString.length >= 1) {
+    if (opts.testString) {
         var testString = String(opts.testString) || 'sass';
 
         //proper re
